@@ -1,0 +1,13 @@
+/* styles.css */
+
+/* Add your CSS styles here */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+}
