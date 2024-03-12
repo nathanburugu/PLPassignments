@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grade Calculator</title>
+<script>
+function calculateGrades() {
+  try {
+    const students = [];
+
+    // Loop through 20 students
+    for (let i = 1; i <= 20; i++) {
+      const name = prompt(`Enter name for student ${i}:`);
+      if (!name) {
+        throw new Error("Name is required.");
+      }
+
+      const assignment1 = parseFloat(prompt(`Enter Assignment One marks for ${name}:`));
+      if (isNaN(assignment1)) {
+        throw new Error("Invalid Assignment One marks.");
+      }
+
+      const assignment2 = parseFloat(prompt(`Enter Assignment Two marks for ${name}:`));
+      if (isNaN(assignment2)) {
+        throw new Error("Invalid Assignment Two marks.");
+      }
+
+      const cat = parseFloat(prompt(`Enter CAT marks for ${name}:`));
+      if (isNaN(cat)) {
+        throw new Error("Invalid CAT marks.");
+      }
+
+      const finalExam = parseFloat(prompt(`Enter Final Exam marks for ${name}:`));
+      if (isNaN(finalExam)) {
+        throw new Error("Invalid Final Exam marks.");
+      }
+
+      const totalScore = assignment1 + assignment2 + cat + finalExam;
+      let grade;
+      if (totalScore >= 80) {
+        grade = "A";
+      } else if (totalScore >= 70) {
+        grade = "B";
+      } else if (totalScore >= 60) {
+        grade = "C";
+      } else if (totalScore >= 50) {
+        grade = "D";
+      } else {
+        grade = "F";
+      }
+
+      students.push({ name, totalScore, grade });
+    }
+
+    console.log(students);
+  } catch (error) {
+    alert(`Error: ${error.message}`);
+  }
+}
+</script>
+</head>
+<body>
+<button onclick="calculateGrades()">Calculate Grades</button>
+<script>
+  function displayStudents() {
+    const studentsList = document.createElement('ul');
+    students.forEach(student => {
+      const studentItem = document.createElement('li');
+      studentItem.textContent = `Name: ${student.name}, Total Score: ${student.totalScore}, Grade: ${student.grade}`;
+      studentsList.appendChild(studentItem);
+    });
+    document.body.appendChild(studentsList);
+  }
+</script>
+<button onclick="displayStudents()">Display Students</button>
+
+
+</body>
+</html>
